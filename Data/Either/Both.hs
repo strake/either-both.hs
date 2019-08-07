@@ -8,6 +8,12 @@ import Data.Functor.Classes
 data Either' a b = JustLeft a | JustRight b | Both a b
   deriving (Read, Show)
 
+either' :: (a -> c) -> (b -> c) -> (a -> b -> c) -> Either' a b -> c
+either' f g h = \ case
+    JustLeft a -> f a
+    JustRight b -> g b
+    Both a b -> h a b
+
 instance Bifunctor Either' where
     bimap f g = \ case JustLeft a -> JustLeft (f a)
                        JustRight b -> JustRight (g b)

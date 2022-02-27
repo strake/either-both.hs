@@ -32,6 +32,7 @@ library
                      , DeriveFoldable
                      , DeriveTraversable
                      , OverloadedStrings
+                     , Safe
   ghc-options:         -Wall -Wcompat -Wredundant-constraints -Wno-name-shadowing
                        -Wincomplete-record-updates -Wincomplete-uni-patterns
 

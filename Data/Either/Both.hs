@@ -76,6 +76,9 @@ instance Semigroup a => Monad (Either' a) where
         Both a₁ (JustRight b) -> Both a₁ b
         Both a₁ (Both a₂ b) -> Both (a₁ <> a₂) b
 
+instance Eq a => Eq1 (Either' a) where liftEq = liftEq2 (==)
+instance Ord a => Ord1 (Either' a) where liftCompare = liftCompare2 compare
+
 instance Eq2 Either' where
     liftEq2 f g x y = case (toMaybes x, toMaybes y) of
         ((am₁, bm₁), (am₂, bm₂)) -> liftEq f am₁ am₂ && liftEq g bm₁ bm₂
